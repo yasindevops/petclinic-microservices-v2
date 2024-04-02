@@ -23,3 +23,10 @@ generated/
 
 # Terraform
 **/.terraform/
+
+# Ignore the "ss" folder
+ss/
+
+# Ignore the "microservice.md" file
+Microservices-NOTES.md
+
