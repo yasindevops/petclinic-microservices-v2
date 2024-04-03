@@ -1132,7 +1132,9 @@ git branch feature/msp-15
 git checkout feature/msp-15
 ```
 
-- `petclinic-microservices` > `infrastructure` klasöründe `dev-k8s-terraform` klasörü oluştur ve içerisine `main.tf` dosyası oluştur, aşağıdaki komutları kopyala. Bu main.tf ile 1 master, 2 Worker Node'dan oluşan kubernetes Infrastructure için temel olacak 3 server (serverlarda k8s cluster YOK)oluşacak. main.tf içerisinde;
+- `petclinic-microservices` > `infrastructure` klasöründe `dev-k8s-terraform` klasörü oluştur ve içerisine `main.tf` dosyası oluştur, aşağıdaki komutları kopyala.
+  - 3 farklı yerde `subnet_id = "subnet-c41ba589"  # select own subnet_id of us-east-1a` satırda yer alan subnet ID DEĞİŞTİR!!!
+- Bu main.tf ile 1 master, 2 Worker Node'dan oluşan kubernetes Infrastructure için temel olacak 3 server (serverlarda k8s cluster YOK)oluşacak. main.tf içerisinde;
   - master node'a s3 yetkisi verilecek. Bir s3 bucket HELM reposu olarak kullanılacak, bu bucket'tan paketler çekileceği için bu yetki verildi.
   - `resource "aws_instance" "kube-master"`, `resource "aws_instance" "worker-1"`, `resource "aws_instance" "worker-2` kısımlarında subnet_id kısımlarını kendi default vpc içerisinde us-east-1a subnet ID yapıştır.
   - instance'lara birden fazla tag atamamızın sebebi ansible ile filtre yapabilmek için.
