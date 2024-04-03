@@ -2009,6 +2009,7 @@ appVersion: 0.1.0
 NAME                                    CHART VERSION   APP VERSION     DESCRIPTION
 stable-petclinicapp/petclinic_chart     0.0.1           0.1.0           A Helm chart for Kubernetes
 ```
+- `k8s/petclinic_chart/Chart.yaml` dosyasında `version` değerini `HELM_VERSION` yap. (version: HELM_VERSION)
 
 - `OPSİYONEL`:
 
@@ -2018,7 +2019,6 @@ stable-petclinicapp/petclinic_chart     0.0.1           0.1.0           A Helm c
   - `helm search repo stable-petclinicapp` ---> her iki versiyonu kontrol et.
   - AWS konsola git ve her iki versiyonu kontrol et.
 
-- `k8s/petclinic_chart/Chart.yaml` dosyasında `version` değerini `HELM_VERSION` yap. (version: HELM_VERSION)
 - Değişikleri uzak repoya PUSHla (petclinic-microservices klasörü altında):
 
 ```bash
