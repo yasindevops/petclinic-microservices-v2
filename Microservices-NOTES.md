@@ -794,7 +794,7 @@ public class PetTest {
 
 - `spring-petclinic-customers-service` klasörü içerisinde `../mvnw clean test` komutu çalıştır ve unit testi yap. "Results: test run:4, failures:0, errors:0, skipped:0" yazısını gör.
 - `git add . / git commit -m 'added 1 UT file for the customer-service' / git push --set-upstream origin feature/msp-11` ----> Eklenen dosyayı PUSHla.
-- `petclinic-microservices` klasörü altında bulunan POM dosyası içerisine `Jacoco` tool plugin ekle. Bunun için aşağıdaki komutları pom.xml dosyası içerisinde <profiles> --> <profile> <id>springboot --> <plugins> taglarinin içerisine yapıştır. (indentication ve boşluk önemli değil.)
+- `petclinic-microservices` klasörü altında bulunan POM dosyası içerisine `Jacoco` tool plugin ekle. Bunun için aşağıdaki komutları pom.xml dosyası içerisinde `<profiles> --> <profile> <id>springboot --> <plugins>` taglarinin içerisine yapıştır. (indentication ve boşluk önemli değil.)
 
 ```xml
 <plugin>
@@ -1061,7 +1061,7 @@ git checkout dev
 git branch feature/msp-14
 git checkout feature/msp-14
 ```
-
+- Jenkinsuser'a bağlan ve `aws configure` komutu ile jenkins user'a aws configure YAP.
 - `Jenkins dashboard` > `New Item` tıkla ve `Jenkins job` oluştur. Bu jenkins job ile AWS ECR'da docker registry oluşturulacak.
 
 ```yml
