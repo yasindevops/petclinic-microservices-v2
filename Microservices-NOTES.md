@@ -2164,7 +2164,7 @@ aws ecr create-repository \
 - Click `Build now` to manually start the job.
 ```
 
-- `ansible/playbooks` klasörü içinde deploy işlemi için `dev-petclinic-deploy-template` isminde Ansible playbook dosyası oluştur ve aşağıdaki komutları kopyala.
+- `ansible/playbooks` klasörü içinde deploy işlemi için `dev-petclinic-deploy-template` isminde Ansible playbook dosyası oluştur ve aşağıdaki komutları kopyala. `helm repo add ` komutundaki s3-bucket name ismini DEĞİŞTİR.
 
 ```yaml
 - hosts: role_master
