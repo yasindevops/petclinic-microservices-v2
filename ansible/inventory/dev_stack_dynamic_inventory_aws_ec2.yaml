@@ -11,6 +11,6 @@ keyed_groups:
   - key: tags['Role']
     prefix: "role"
 hostnames:
-  - "ip-address"
+  - "public-ip"  # private ip adres için "ip-address"
 compose:
   ansible_user: "'ubuntu'"
