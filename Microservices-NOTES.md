@@ -647,8 +647,7 @@ ENTRYPOINT ["java", "-Djava.security.egd=file: /dev/./urandom", "-jar", "/app.ja
 ## MSP 9 - Prepare Jenkins Server for CI/CD Pipeline
 
 #
-
-- msp-9-jenkins-server-template-v2\jenkins.auto.tfvars dosyasında `mykey` değiştir ve terraform dosyasını `terraform init` ve `terraform apply` ile çalıştır.
+- msp-9-jenkins-server-template-v2\jenkins.auto.tfvars dosyasında `mykey` değiştir ve KENDİ BİLGİSAYARINDA yani lokalde terraform dosyasını `terraform init` ve `terraform apply` ile çalıştır.
   - Jenkins server ile uygulmanın API Gateway portları 8080'dir. Localde çalışırken port çakışmasına dikkat etmek gerekir. Jenkins birçok uygulama ile bu port ile iletişim halinde olduğu için uygulamanın API Gateway portunu değiştirmek daha makul çözüm. Bunun için docker-compose dosyasında git, API Gateway server ports kısmını `8081:8080` yap. Api gateway ile iletişim sağlayan scriptlerde buna dikkat etmek gerekir.
 - Bu bölümde terraform dosyasını çalıştırdığımız için aşağıdaki adımları PAS geçtik.
 
@@ -1749,7 +1748,7 @@ aws ec2 delete-key-pair --region ${AWS_REGION} --key-name ${ANS_KEYPAIR}
 rm -rf ${ANS_KEYPAIR}
 ```
 
-- Tüm adımlar başarılı bir şekilde oluştuğu için bu komutları elimizde hazır bir şekilde saklamak için script şeklinde kaydedeceğiz. Bu script tek blok halinde kullnaılmayacak, step step kullanılacak.
+- Tüm adımlar başarılı bir şekilde oluştuğu için bu komutları elimizde hazır bir şekilde saklamak için script şeklinde kaydedeceğiz. Bu script tek blok halinde kullanılmayacak, step step kullanılacak.
 - `petclinic-microservices` > `infrastructure` klasörü içerisine `create-qa-automation-environment.sh` dosyası oluştur ve aşağıdaki komutları kopyala.
 
 ```bash
@@ -3653,6 +3652,7 @@ VPC/subnet: default  >>> CREATE
 
 - `jenkins` klasörü altında `petclinic-staging` pipeline kullanılmak üzere `jenkinsfile-petclinic-staging` isminde dosya oluştur ve aşağıdaki komutu kopyala. Değişmesi gereken satırlar aşağıda:
   - satır 10 > RANCHER_URL
+  - satır 11 > RANCHER_CONTEXT
   - satır 77 (stage('Deploy App on Petclinic Kubernetes Cluster') içerisinde) > "helm repo add stable-petclinic s3://petclinic-helm-charts-<put-your-name>/stable/myapp/" > s3 bucket ismi.
 
 ```groovy
