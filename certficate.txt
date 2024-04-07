@@ -1,0 +1,39 @@
+aws acm get-certificate --certificate-arn arn:aws:acm:us-east-1:939772703763:certificate/6d438058-41b4-4892-a2ba-dead4b9cadad --output text --query Certificate > certificate.pem
+
+aws acm get-certificate --certificate-arn arn:aws:acm:us-east-1:939772703763:certificate/6d438058-41b4-4892-a2ba-dead4b9cadad --output text --query CertificateChain > certificate_chain.pem
+
+mv certificate_chain.pem tls.crt
+
+mv certificate.pem tls.key
+
+
+kubectl -n cattle-system create secret tls tls-rancher-ingress \
+  ----cert=~/.ssh/tls.crt \
+  --key=~/.ssh//tls.key
+
+
+kubectl create secret generic tls-rancher-ingress \
+  --namespace cattle-system \
+  --from-file=tls.crt=/~/.ssh/tls.crt \
+  --from-file=tls.key=/~/.ssh/tls.key
+
+kubectl create secret generic tls-rancher-ingress \
+  --namespace cattle-system \
+  --from-file=tls.crt=./tls.crt \
+  --from-file=tls.key=./tls.key
+
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+
+kubectl create namespace cattle-system
+
+helm install rancher rancher-latest/rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.yasinhasturk.com \
+  --set bootstrapPassword=admin \
+  --set ingress.tls.source=secret 
+
+
+kubectl -n cattle-system create secret tls tls-rancher-ingress \
+  --cert=tls.crt \
+  --key=tls.key
+  
