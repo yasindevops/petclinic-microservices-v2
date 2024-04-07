@@ -171,7 +171,7 @@ data "aws_route53_zone" "dns" {
 }
 
 resource "aws_route53_record" "arecord" {
-  name = "ranchero.${data.aws_route53_zone.dns.name}"
+  name = "rancher.${data.aws_route53_zone.dns.name}"
   type = "A"
   zone_id = data.aws_route53_zone.dns.zone_id
   alias {

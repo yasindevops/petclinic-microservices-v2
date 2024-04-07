@@ -4,7 +4,7 @@ variable "region" {
   default = "us-east-1"
 }
 variable "mykey" {
-  default = "petclinic-ranchertr"
+  default = "petclinic-rancher"
 }
 variable "tags" {
   default = "petclinic-rancher-server"
